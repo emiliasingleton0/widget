@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Mochi Desk Buddy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell" aria-label="Mochi Desk Buddy">
+    <header class="titlebar">
+      <div class="drag-region">
+        <span class="sparkle">✦</span>
+        <span class="app-title">mochi desk buddy</span>
+        <span class="sparkle">✦</span>
+      </div>
+
+      <div class="window-buttons">
+        <button
+          id="pin-button"
+          class="window-button"
+          type="button"
+          aria-label="Keep window on top"
+          title="Keep on top"
+        >♡</button>
+        <button
+          id="minimize-button"
+          class="window-button"
+          type="button"
+          aria-label="Minimize"
+          title="Minimize"
+        >−</button>
+        <button
+          id="close-button"
+          class="window-button close"
+          type="button"
+          aria-label="Close"
+          title="Close"
+        >×</button>
+      </div>
+    </header>
+
+    <section class="mascot-row">
+      <div class="mascot" aria-hidden="true">
+        <div class="ear left-ear"></div>
+        <div class="ear right-ear"></div>
+        <div class="face">
+          <span class="eye left-eye"></span>
+          <span class="eye right-eye"></span>
+          <span class="mouth">ᴗ</span>
+          <span class="blush left-blush"></span>
+          <span class="blush right-blush"></span>
+        </div>
+      </div>
+
+      <div class="greeting-card">
+        <p id="greeting">good afternoon, emi ♡</p>
+        <p id="date-label"></p>
+        <p class="tiny-message" id="tiny-message">
+          one small task at a time!
+        </p>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Desk buddy sections">
+      <button class="tab active" type="button" data-tab="today">today</button>
+      <button class="tab" type="button" data-tab="focus">focus</button>
+      <button class="tab" type="button" data-tab="notes">notes</button>
+    </nav>
+
+    <section id="today-panel" class="panel active">
+      <div class="section-heading">
+        <h1>tiny to-do list</h1>
+        <span id="task-count">0/0 done</span>
+      </div>
+
+      <form id="task-form" class="task-form">
+        <input
+          id="task-input"
+          type="text"
+          maxlength="80"
+          placeholder="add something small..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" aria-label="Add task">＋</button>
+      </form>
+
+      <ul id="task-list" class="task-list"></ul>
+
+      <button id="clear-completed" class="soft-button" type="button">
+        clear completed
+      </button>
+    </section>
+
+    <section id="focus-panel" class="panel">
+      <div class="timer-card">
+        <p class="timer-label" id="timer-label">focus time</p>
+        <div id="timer-display" class="timer-display">25:00</div>
+
+        <div class="timer-controls">
+          <button id="timer-start" class="primary-button" type="button">
+            start
+          </button>
+          <button id="timer-reset" class="soft-button" type="button">
+            reset
+          </button>
+        </div>
+
+        <div class="preset-row">
+          <button type="button" class="preset active" data-minutes="25">
+            25 min
+          </button>
+          <button type="button" class="preset" data-minutes="15">
+            15 min
+          </button>
+          <button type="button" class="preset" data-minutes="5">
+            break
+          </button>
+        </div>
+      </div>
+
+      <label class="focus-label" for="focus-goal">today i am focusing on...</label>
+      <input
+        id="focus-goal"
+        class="focus-goal"
+        type="text"
+        maxlength="80"
+        placeholder="my next assignment ♡"
+      />
+    </section>
+
+    <section id="notes-panel" class="panel">
+      <label class="section-heading note-heading" for="notes-area">
+        <h1>sticky note</h1>
+        <span>auto-saves</span>
+      </label>
+
+      <textarea
+        id="notes-area"
+        maxlength="1200"
+        placeholder="write anything here... ♡"
+      ></textarea>
+
+      <div class="note-footer">
+        <span id="note-count">0/1200</span>
+        <button id="clear-notes" class="soft-button" type="button">
+          clear note
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>drag me anywhere by the top bar</span>
+      <span aria-hidden="true">୨୧</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
