@@ -1,41 +1,44 @@
 {
   "name": "mochi-desk-buddy",
-  "version": "1.0.0",
-  "description": "A kawaii draggable desktop productivity widget built with Electron.",
-  "main": "main.js",
+  "version": "2.0.0",
+  "description": "A transparent desktop companion with focus, tasks, and notes.",
+  "main": "src/main/index.cjs",
   "author": "Emi",
   "license": "MIT",
+  "private": false,
   "scripts": {
     "start": "electron .",
     "dev": "electron .",
-    "build:win": "electron-builder --win portable",
-    "build:mac": "electron-builder --mac dmg",
-    "build": "electron-builder"
+    "check": "node scripts/check-project.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "build:portable": "electron-builder --win portable",
+    "build:installer": "electron-builder --win nsis",
+    "build": "electron-builder --win nsis"
   },
   "devDependencies": {
-    "electron": "latest",
-    "electron-builder": "latest"
+    "electron": "37.2.3",
+    "electron-builder": "26.0.12"
   },
   "build": {
-    "appId": "com.emi.mochideskbuddy",
+    "appId": "dev.mochi.deskbuddy",
     "productName": "Mochi Desk Buddy",
-    "files": [
-      "main.js",
-      "preload.js",
-      "index.html",
-      "styles.css",
-      "script.js",
-      "assets/**/*"
-    ],
-    "directories": {
-      "output": "dist"
-    },
+    "asar": true,
+    "files": ["src/**/*", "README.md", "LICENSE"],
+    "directories": {"output": "dist"},
     "win": {
-      "target": "portable"
+      "target": [
+        {"target": "nsis", "arch": ["x64"]},
+        {"target": "portable", "arch": ["x64"]}
+      ],
+      "artifactName": "Mochi-Desk-Buddy-${version}-${arch}.${ext}"
     },
-    "mac": {
-      "target": "dmg",
-      "category": "public.app-category.productivity"
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Mochi Desk Buddy",
+      "artifactName": "Mochi-Desk-Buddy-Setup-${version}-${arch}.${ext}"
     }
   }
 }
