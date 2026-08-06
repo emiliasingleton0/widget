@@ -1,8 +1,1 @@
-MOCHI DESK BUDDY v2.0
 
-1. Extract this ZIP.
-2. Open the folder.
-3. Double-click RUN-MOCHI.bat.
-4. The first launch installs Electron and may take a few minutes.
-
-You can drag Mochi using the upper transparent area, resize from the lower-right grip, and open tools from the floating buttons.
